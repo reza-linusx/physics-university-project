@@ -7,6 +7,9 @@ function Length() {
     <div className="h-screen w-screen flex flex-col md:flex-row bg-slate-600 p-5 gap-2">
       <div className="flex-1 md:flex-3 bg-slate-700 flex items-center justify-center rounded-lg">
         <Canvas>
+          <ambientLight intensity={1} />
+          <directionalLight position={[5, 5, 5]} intensity={2.0} />
+          <directionalLight position={[-5, -5, -5]} intensity={0.5} />
           <Globe />
         </Canvas>
       </div>
