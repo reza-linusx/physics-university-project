@@ -28,8 +28,8 @@ function Globe() {
 
   return (
     <group ref={globeRef}>
-      <Sphere args={[2, 64, 64]}>
-        <meshStandardMaterial map={texture} roughness={0.4} metalness={0.0} />
+      <Sphere args={[2, 96, 96]}>
+        <meshStandardMaterial map={texture} roughness={0.8} metalness={0.0} />
       </Sphere>
 
       <Line points={linePoints} color="#ff6b35" lineWidth={6} />
