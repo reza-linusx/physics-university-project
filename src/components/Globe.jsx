@@ -15,7 +15,7 @@ function Globe() {
   });
 
   // Meridian line from North Pole to Equator
-  const radius = 2.02;
+  const radius = 2.03;
   const meridianPoints = [];
   const segments = 30;
 
@@ -27,14 +27,14 @@ function Globe() {
     meridianPoints.push([x, y, 0]);
   }
 
-  // Equator line (full circle)
+  const equtorRadius = 2.01;
   const equatorPoints = [];
   const equatorSegments = 60;
   for (let i = 0; i <= equatorSegments; i++) {
     const theta = (i / equatorSegments) * Math.PI * 2;
-    const x = radius * Math.cos(theta);
+    const x = equtorRadius * Math.cos(theta);
     const y = 0;
-    const z = radius * Math.sin(theta);
+    const z = equtorRadius * Math.sin(theta);
     equatorPoints.push([x, y, z]);
   }
 
@@ -47,8 +47,8 @@ function Globe() {
       {/* Meridian line - orange */}
       <Line points={meridianPoints} color="#ff6b35" lineWidth={6} />
 
-      {/* Equator line - green, thin */}
-      <Line points={equatorPoints} color="#4ade80" lineWidth={1.5} />
+      {/* Equator line - green, thicker */}
+      <Line points={equatorPoints} color="#4ade80" lineWidth={4} />
     </group>
   );
 }
