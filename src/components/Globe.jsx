@@ -1,9 +1,12 @@
 import React, { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { Sphere, Line } from "@react-three/drei";
+import { TextureLoader } from "three";
+import earthTexture from "../assets/earth.jpg";
 
 function Globe() {
   const globeRef = useRef();
+  const texture = useLoader(TextureLoader, earthTexture);
 
   useFrame(({ clock }) => {
     if (globeRef.current) {
@@ -11,7 +14,6 @@ function Globe() {
     }
   });
 
-  // Curved line from North Pole to Equator - slightly above surface
   const radius = 2.02;
   const linePoints = [];
   const segments = 30;
@@ -27,13 +29,7 @@ function Globe() {
   return (
     <group ref={globeRef}>
       <Sphere args={[2, 64, 64]}>
-        <meshStandardMaterial
-          color="#1a5a9e"
-          roughness={0.4}
-          metalness={0.0}
-          emissive="#0d2a4a"
-          emissiveIntensity={0.1}
-        />
+        <meshStandardMaterial map={texture} roughness={0.4} metalness={0.0} />
       </Sphere>
 
       <Line points={linePoints} color="#ff6b35" lineWidth={6} />
