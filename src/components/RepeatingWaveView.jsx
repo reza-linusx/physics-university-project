@@ -1,6 +1,5 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import RepeatingWaves from "./RepeatingWaves";
 
 function RepeatingWaveView() {
@@ -10,14 +9,6 @@ function RepeatingWaveView() {
       <directionalLight position={[5, 5, 5]} intensity={0.5} />
       <directionalLight position={[-5, -5, -5]} intensity={0.3} />
       <RepeatingWaves />
-      <OrbitControls
-        enableZoom={true}
-        enablePan={false}
-        autoRotate={false}
-        minDistance={2}
-        maxDistance={12}
-        target={[0, 0, 0]}
-      />
     </Canvas>
   );
 }

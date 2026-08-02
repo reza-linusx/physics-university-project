@@ -1,16 +1,7 @@
-import React, { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import React from "react";
 import { Line, Text } from "@react-three/drei";
 
 function RepeatingWaves() {
-  const groupRef = useRef();
-
-  useFrame(({ clock }) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = clock.getElapsedTime() * 0.015;
-    }
-  });
-
   // Create repeating waves with a counter
   const numWaves = 6;
   const waves = [];
@@ -33,7 +24,6 @@ function RepeatingWaves() {
     waves.push(points);
   }
 
-  // Wavelength markers at the start and end of each wave
   const markers = [];
   for (let w = 0; w < numWaves; w++) {
     const xOffset = w * spacing - ((numWaves - 1) * spacing) / 2;
@@ -44,8 +34,7 @@ function RepeatingWaves() {
   }
 
   return (
-    <group ref={groupRef}>
-      {/* All the waves */}
+    <group>
       {waves.map((points, index) => (
         <Line
           key={index}
@@ -57,7 +46,6 @@ function RepeatingWaves() {
         />
       ))}
 
-      {/* Wavelength markers at the bottom */}
       {markers.map((marker, index) => (
         <Line
           key={`marker-${index}`}
@@ -69,7 +57,6 @@ function RepeatingWaves() {
         />
       ))}
 
-      {/* Vertical lines at each wavelength boundary */}
       {markers.map((marker, index) => (
         <Line
           key={`vline-${index}`}
@@ -84,7 +71,6 @@ function RepeatingWaves() {
         />
       ))}
 
-      {/* Last vertical line */}
       {markers.length > 0 && (
         <Line
           points={[
@@ -98,7 +84,6 @@ function RepeatingWaves() {
         />
       )}
 
-      {/* Counter text for number of wavelengths */}
       <Text
         position={[0, -1.2, 0]}
         fontSize={0.3}
