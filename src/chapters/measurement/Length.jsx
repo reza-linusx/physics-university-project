@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Earth from "../../components/Earth";
 import PlatinumView from "../../components/PlatinumView";
+import SingleWaveView from "../../components/SingleWaveView";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
@@ -54,11 +55,7 @@ function Length() {
         <div className="flex-1 w-full">
           {activeTab === "earth" && <Earth />}
           {activeTab === "bar" && <PlatinumView />}
-          {activeTab === "atom" && (
-            <div className="flex items-center justify-center w-full h-full">
-              <h1 className="text-white text-3xl font-bold">⚛️ Atom View</h1>
-            </div>
-          )}
+          {activeTab === "atom" && <SingleWaveView />}
           {activeTab === "light" && (
             <div className="flex items-center justify-center w-full h-full">
               <h1 className="text-white text-3xl font-bold">💡 Light View</h1>
