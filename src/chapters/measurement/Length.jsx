@@ -12,7 +12,7 @@ function Length() {
           <directionalLight position={[5, 5, 5]} intensity={1.5} />
           <directionalLight position={[-5, -5, -5]} intensity={0.5} />
           <Globe />
-          <OrbitControls />
+          <OrbitControls minDistance={3} maxDistance={10} enablePan={false} />
         </Canvas>
       </div>
 
