@@ -7,12 +7,19 @@ function Length() {
   return (
     <div className="h-screen w-screen flex flex-col md:flex-row bg-slate-600 p-5 gap-2">
       <div className="flex-1 md:flex-3 bg-slate-700 flex items-center justify-center rounded-lg">
-        <Canvas>
-          <ambientLight intensity={1.0} />
-          <directionalLight position={[5, 5, 5]} intensity={1.5} />
-          <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+        <Canvas camera={{ position: [3.8, 2.5, 6], fov: 40 }}>
+          <ambientLight intensity={0.8} />
+          <directionalLight position={[5, 5, 5]} intensity={0.3} />
+          <directionalLight position={[-5, -5, -5]} intensity={0.2} />
           <Globe />
-          <OrbitControls minDistance={3} maxDistance={10} enablePan={false} />
+          <OrbitControls
+            enableZoom={true}
+            enablePan={false}
+            autoRotate={false}
+            minDistance={3.5}
+            maxDistance={10}
+            target={[0, 0, 0]}
+          />
         </Canvas>
       </div>
 

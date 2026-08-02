@@ -1,23 +1,28 @@
 import React, { useRef } from "react";
-import { useLoader, useFrame } from "@react-three/fiber";
-import { TextureLoader } from "three";
-import earthTexture from "../assets/earth.jpg";
+import { useFrame } from "@react-three/fiber";
+import { Sphere } from "@react-three/drei";
 
 function Globe() {
-  const meshRef = useRef();
-  const texture = useLoader(TextureLoader, earthTexture);
+  const globeRef = useRef();
 
-  useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.002;
+  useFrame(({ clock }) => {
+    if (globeRef.current) {
+      globeRef.current.rotation.y = clock.getElapsedTime() * 0.04;
     }
   });
 
   return (
-    <mesh ref={meshRef}>
-      <sphereGeometry args={[1.8, 64, 64]} />
-      <meshStandardMaterial map={texture} />
-    </mesh>
+    <group ref={globeRef}>
+      <Sphere args={[2, 64, 64]}>
+        <meshStandardMaterial
+          color="#1a5a9e"
+          roughness={0.4}
+          metalness={0.0}
+          emissive="#0d2a4a"
+          emissiveIntensity={0.1}
+        />
+      </Sphere>
+    </group>
   );
 }
 
