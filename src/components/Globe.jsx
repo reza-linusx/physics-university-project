@@ -14,7 +14,6 @@ function Globe() {
     }
   });
 
-  // Meridian line from North Pole to Equator
   const radius = 2.03;
   const meridianPoints = [];
   const segments = 30;
@@ -43,11 +42,7 @@ function Globe() {
       <Sphere args={[2, 96, 96]}>
         <meshStandardMaterial map={texture} roughness={0.8} metalness={0.0} />
       </Sphere>
-
-      {/* Meridian line - orange */}
       <Line points={meridianPoints} color="#ff6b35" lineWidth={6} />
-
-      {/* Equator line - green, thicker */}
       <Line points={equatorPoints} color="#4ade80" lineWidth={4} />
     </group>
   );

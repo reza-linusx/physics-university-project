@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Earth from "../../components/Earth";
 import PlatinumView from "../../components/PlatinumView";
-import SingleWaveView from "../../components/SingleWaveView";
 import RepeatingWaveView from "../../components/RepeatingWaveView";
 
 function Length() {

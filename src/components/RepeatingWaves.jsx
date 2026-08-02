@@ -2,7 +2,6 @@ import React from "react";
 import { Line, Text } from "@react-three/drei";
 
 function RepeatingWaves() {
-  // Create repeating waves with a counter
   const numWaves = 6;
   const waves = [];
   const pointsPerWave = 40;
