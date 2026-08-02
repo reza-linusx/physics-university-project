@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Globe from "../../components/Globe";
+import Earth from "../../components/Earth";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
@@ -10,20 +8,7 @@ function Length() {
     <div className="h-screen w-screen flex flex-col md:flex-row bg-slate-600 p-5 gap-2">
       <div className="flex-1 md:flex-3 bg-slate-700 flex items-center justify-center rounded-lg">
         {activeTab === "earth" ? (
-          <Canvas camera={{ position: [3.8, 2.5, 6], fov: 40 }}>
-            <ambientLight intensity={0.8} />
-            <directionalLight position={[5, 5, 5]} intensity={0.3} />
-            <directionalLight position={[-5, -5, -5]} intensity={0.2} />
-            <Globe />
-            <OrbitControls
-              enableZoom={true}
-              enablePan={false}
-              autoRotate={false}
-              minDistance={3.5}
-              maxDistance={10}
-              target={[0, 0, 0]}
-            />
-          </Canvas>
+          <Earth />
         ) : (
           <div className="flex items-center justify-center w-full h-full">
             <h1 className="text-white text-3xl font-bold">Other Tab</h1>
