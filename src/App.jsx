@@ -1,10 +1,11 @@
 import React from "react";
+import { Canvas } from "@react-three/fiber";
 
 function Length() {
   return (
     <div className="h-screen w-screen flex flex-col md:flex-row bg-slate-600 p-5 gap-2">
       <div className="flex-1 md:flex-3 bg-slate-700 flex items-center justify-center rounded-lg">
-        <p className="text-slate-400">Visual will go here</p>
+        <Canvas></Canvas>
       </div>
 
       <div className="flex-1 md:flex-1 bg-slate-700 flex flex-col items-center justify-center px-8 rounded-lg">
