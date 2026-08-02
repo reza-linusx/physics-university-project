@@ -14,8 +14,9 @@ function Globe() {
     }
   });
 
+  // Meridian line from North Pole to Equator
   const radius = 2.02;
-  const linePoints = [];
+  const meridianPoints = [];
   const segments = 30;
 
   for (let i = 0; i <= segments; i++) {
@@ -23,7 +24,18 @@ function Globe() {
     const angle = (t * Math.PI) / 2;
     const x = radius * Math.sin(angle);
     const y = radius * Math.cos(angle);
-    linePoints.push([x, y, 0]);
+    meridianPoints.push([x, y, 0]);
+  }
+
+  // Equator line (full circle)
+  const equatorPoints = [];
+  const equatorSegments = 60;
+  for (let i = 0; i <= equatorSegments; i++) {
+    const theta = (i / equatorSegments) * Math.PI * 2;
+    const x = radius * Math.cos(theta);
+    const y = 0;
+    const z = radius * Math.sin(theta);
+    equatorPoints.push([x, y, z]);
   }
 
   return (
@@ -32,7 +44,11 @@ function Globe() {
         <meshStandardMaterial map={texture} roughness={0.8} metalness={0.0} />
       </Sphere>
 
-      <Line points={linePoints} color="#ff6b35" lineWidth={6} />
+      {/* Meridian line - orange */}
+      <Line points={meridianPoints} color="#ff6b35" lineWidth={6} />
+
+      {/* Equator line - green, thin */}
+      <Line points={equatorPoints} color="#4ade80" lineWidth={1.5} />
     </group>
   );
 }
