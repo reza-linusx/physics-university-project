@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import Earth from "../../components/Earth";
-import * as math from "mathjs";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
-
-  const formatFraction = (num, den) => {
-    return math.format(math.fraction(num, den));
-  };
 
   return (
     <div className="h-screen w-screen flex flex-col md:flex-row bg-slate-600 p-5 gap-2">
@@ -66,7 +61,65 @@ function Length() {
         </div>
       </div>
 
-      <div className="flex-1 md:flex-1 bg-slate-700 rounded-lg"></div>
+      <div className="flex-1 md:flex-1 bg-slate-700 flex flex-col px-6 py-8 rounded-lg overflow-y-auto">
+        <h1 className="text-white text-3xl font-bold mb-6 text-center">
+          Length
+        </h1>
+
+        <div className="flex-1 flex flex-col items-center justify-center">
+          {activeTab === "earth" && (
+            <div className="text-white text-center w-full">
+              <p className="text-sm text-slate-400 mb-4">تعریف اول</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-xl font-light leading-relaxed">
+                  یک متر = 1/10,000,000 فاصله قطب تا استوا
+                </p>
+              </div>
+              <p className="text-sm text-slate-400 mt-4">قطب شمال → استوا</p>
+            </div>
+          )}
+
+          {activeTab === "bar" && (
+            <div className="text-white text-center w-full">
+              <p className="text-sm text-slate-400 mb-4">تعریف دوم</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-xl font-light leading-relaxed">
+                  یک متر = طول میله پلاتین
+                </p>
+              </div>
+              <p className="text-sm text-slate-400 mt-4">
+                میله پلاتین در پاریس
+              </p>
+            </div>
+          )}
+
+          {activeTab === "atom" && (
+            <div className="text-white text-center w-full">
+              <p className="text-sm text-slate-400 mb-4">تعریف سوم</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-xl font-light leading-relaxed">
+                  یک متر = 1,650,763.73 λ
+                </p>
+              </div>
+              <p className="text-sm text-slate-400 mt-4">
+                λ = طول موج کریپتون-۸۶
+              </p>
+            </div>
+          )}
+
+          {activeTab === "light" && (
+            <div className="text-white text-center w-full">
+              <p className="text-sm text-slate-400 mb-4">تعریف چهارم</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-xl font-light leading-relaxed">
+                  یک متر = 1/299,792,458 ثانیه نوری
+                </p>
+              </div>
+              <p className="text-sm text-slate-400 mt-4">سرعت نور در خلا</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
