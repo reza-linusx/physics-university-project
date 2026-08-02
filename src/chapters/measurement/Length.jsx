@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Earth from "../../components/Earth";
+import PlatinumView from "../../components/PlatinumView";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
@@ -51,11 +52,16 @@ function Length() {
         </div>
 
         <div className="flex-1 w-full">
-          {activeTab === "earth" ? (
-            <Earth />
-          ) : (
+          {activeTab === "earth" && <Earth />}
+          {activeTab === "bar" && <PlatinumView />}
+          {activeTab === "atom" && (
             <div className="flex items-center justify-center w-full h-full">
-              <h1 className="text-white text-3xl font-bold">Other Tab</h1>
+              <h1 className="text-white text-3xl font-bold">⚛️ Atom View</h1>
+            </div>
+          )}
+          {activeTab === "light" && (
+            <div className="flex items-center justify-center w-full h-full">
+              <h1 className="text-white text-3xl font-bold">💡 Light View</h1>
             </div>
           )}
         </div>
@@ -77,6 +83,51 @@ function Length() {
               </div>
               <p className="text-white text-xs mt-6 italic">
                 به دلایل علمی، این تعریف زمینی کنار گذاشته شد
+              </p>
+            </div>
+          )}
+
+          {activeTab === "bar" && (
+            <div className="text-white text-center w-full">
+              <p className="text-white text-sm mb-4">تعریف دوم</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-base md:text-lg font-light leading-relaxed text-white text-right">
+                  متر به صورت فاصله بین دو خراش در دو سر یک میله از جنس
+                  پلاتین-ایریدیم تعریف شد که در اداره بین‌المللی اوزان و
+                  مقیاس‌ها در پاریس نگهداری می‌شد و نمونه‌های دقیقی به
+                  آزمایشگاه‌های سراسر جهان فرستاده شد.
+                </p>
+                <p className="text-white text-xs mt-4 italic">
+                  این استاندارد قابل دسترس‌تر بود
+                </p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === "atom" && (
+            <div className="text-white text-center w-full">
+              <p className="text-white text-sm mb-4">تعریف سوم</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-lg md:text-xl font-light leading-relaxed text-white">
+                  یک متر = 1,650,763.73 طول موج
+                </p>
+              </div>
+              <p className="text-white text-xs mt-6 italic">
+                مبتنی بر طول موج کریپتون-۸۶
+              </p>
+            </div>
+          )}
+
+          {activeTab === "light" && (
+            <div className="text-white text-center w-full">
+              <p className="text-white text-sm mb-4">تعریف چهارم</p>
+              <div className="bg-slate-800 rounded-lg p-6 w-full">
+                <p className="text-lg md:text-xl font-light leading-relaxed text-white">
+                  یک متر = 1/299,792,458 ثانیه نوری
+                </p>
+              </div>
+              <p className="text-white text-xs mt-6 italic">
+                مبتنی بر سرعت نور در خلا
               </p>
             </div>
           )}
