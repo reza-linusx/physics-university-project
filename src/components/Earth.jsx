@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Globe from "./Globe";
 
-function Earth() {
+function Earth({ controlsEnabled = true }) {
   return (
     <Canvas camera={{ position: [3.8, 2.5, 6], fov: 40 }}>
       <ambientLight intensity={0.8} />
@@ -17,6 +17,7 @@ function Earth() {
         minDistance={3.5}
         maxDistance={10}
         target={[0, 0, 0]}
+        enabled={controlsEnabled}
       />
     </Canvas>
   );
