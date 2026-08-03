@@ -90,49 +90,25 @@ function Length() {
           className="flex-1 flex gap-2 min-h-0"
           style={{ display: topLevelTab === "measurement" ? "flex" : "none" }}
         >
-          {/* Visual Area - Left */}
-          <div className="flex-1 bg-slate-700 rounded-lg p-4 flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full">
-              <div
-                style={{
-                  display: activeTab === "earth" ? "block" : "none",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <Earth />
-              </div>
-              <div
-                style={{
-                  display: activeTab === "bar" ? "block" : "none",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <PlatinumView />
-              </div>
-              <div
-                style={{
-                  display: activeTab === "atom" ? "block" : "none",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <RepeatingWaveView />
-              </div>
-              <div
-                style={{
-                  display: activeTab === "light" ? "block" : "none",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
+          {/* Visual Area - Left (with transparent whiteboard behind) */}
+          <div className="flex-1 bg-slate-700 rounded-lg p-4 relative overflow-hidden">
+            {/* Whiteboard - Behind everything */}
+            <div className="absolute inset-0 z-0">
+              <Whiteboard transparent={true} hideUi={true} />
+            </div>
+
+            {/* 3D Scene */}
+            <div className="absolute inset-0 z-1">
+              {activeTab === "earth" && <Earth />}
+              {activeTab === "bar" && <PlatinumView />}
+              {activeTab === "atom" && <RepeatingWaveView />}
+              {activeTab === "light" && (
                 <div className="flex items-center justify-center w-full h-full">
                   <h1 className="text-white text-3xl font-bold">
                     💡 Light View
                   </h1>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
@@ -205,12 +181,12 @@ function Length() {
           </div>
         </div>
 
-        {/* Whiteboard - Always rendered, hidden when measurement is active */}
+        {/* Whiteboard - Full width, no info panel */}
         <div
           className="flex-1 bg-slate-700 rounded-lg p-4 min-h-0"
           style={{ display: topLevelTab === "whiteboard" ? "block" : "none" }}
         >
-          <Whiteboard />
+          <Whiteboard transparent={false} hideUi={false} />
         </div>
       </div>
     </div>
