@@ -116,13 +116,7 @@ function Length() {
               )}
             </div>
 
-            <div
-              className="absolute inset-0"
-              style={{
-                zIndex: isDrawingMode ? 1 : 0,
-                pointerEvents: isDrawingMode ? "auto" : "none",
-              }}
-            >
+            <div className="absolute inset-0">
               <Whiteboard transparent={true} hideUi={!isDrawingMode} />
             </div>
 
