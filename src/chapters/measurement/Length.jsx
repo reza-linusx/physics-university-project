@@ -7,6 +7,9 @@ import Whiteboard from "../../components/Whiteboard";
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
   const [topLevelTab, setTopLevelTab] = useState("measurement");
+  const [isDrawingMode, setIsDrawingMode] = useState(false);
+
+  const toggleDrawing = () => setIsDrawingMode(!isDrawingMode);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-600 p-5 gap-2">
@@ -90,17 +93,22 @@ function Length() {
           className="flex-1 flex gap-2 min-h-0"
           style={{ display: topLevelTab === "measurement" ? "flex" : "none" }}
         >
-          {/* Visual Area - Left (with transparent whiteboard behind) */}
+          {/* Visual Area - Left */}
           <div className="flex-1 bg-slate-700 rounded-lg p-4 relative overflow-hidden">
-            {/* Whiteboard - Behind everything */}
-            <div className="absolute inset-0 z-0">
-              <Whiteboard transparent={true} hideUi={true} />
-            </div>
-
-            {/* 3D Scene */}
-            <div className="absolute inset-0 z-1">
-              {activeTab === "earth" && <Earth />}
-              {activeTab === "bar" && <PlatinumView />}
+            {/* 3D Scene - Behind when drawing, on top when not */}
+            <div
+              className="absolute inset-0"
+              style={{
+                zIndex: isDrawingMode ? 0 : 1,
+                pointerEvents: isDrawingMode ? "none" : "auto",
+              }}
+            >
+              {activeTab === "earth" && (
+                <Earth controlsEnabled={!isDrawingMode} />
+              )}
+              {activeTab === "bar" && (
+                <PlatinumView controlsEnabled={!isDrawingMode} />
+              )}
               {activeTab === "atom" && <RepeatingWaveView />}
               {activeTab === "light" && (
                 <div className="flex items-center justify-center w-full h-full">
@@ -110,6 +118,29 @@ function Length() {
                 </div>
               )}
             </div>
+
+            {/* Whiteboard - On top when drawing, behind when not */}
+            <div
+              className="absolute inset-0"
+              style={{
+                zIndex: isDrawingMode ? 1 : 0,
+                pointerEvents: isDrawingMode ? "auto" : "none",
+              }}
+            >
+              <Whiteboard transparent={true} hideUi={!isDrawingMode} />
+            </div>
+
+            {/* Drawing Toggle Button */}
+            <button
+              onClick={toggleDrawing}
+              className={`absolute bottom-4 right-4 z-10 px-4 py-2 rounded-lg shadow-lg transition-colors duration-200 font-medium text-sm ${
+                isDrawingMode
+                  ? "bg-red-600 hover:bg-red-700 text-white"
+                  : "bg-slate-600 hover:bg-slate-500 text-white"
+              }`}
+            >
+              {isDrawingMode ? "✏️ Stop Drawing" : "✏️ Start Drawing"}
+            </button>
           </div>
 
           {/* Info Panel - Right */}
