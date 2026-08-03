@@ -8,12 +8,6 @@ function Globe() {
   const globeRef = useRef();
   const texture = useLoader(TextureLoader, earthTexture);
 
-  useFrame(({ clock }) => {
-    if (globeRef.current) {
-      globeRef.current.rotation.y = clock.getElapsedTime() * 0.04;
-    }
-  });
-
   const radius = 2.03;
   const meridianPoints = [];
   const segments = 30;

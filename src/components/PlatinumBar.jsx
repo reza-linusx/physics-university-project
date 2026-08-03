@@ -5,12 +5,6 @@ import { Box } from "@react-three/drei";
 function PlatinumBar() {
   const barRef = useRef();
 
-  useFrame(({ clock }) => {
-    if (barRef.current) {
-      barRef.current.rotation.y = clock.getElapsedTime() * 0.02;
-    }
-  });
-
   return (
     <group ref={barRef}>
       <Box args={[1.8, 0.18, 0.18]} position={[0, 0, 0]}>
