@@ -6,42 +6,39 @@ import Whiteboard from "../../components/Whiteboard";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
-  const [topLevelTab, setTopLevelTab] = useState("units");
+  const [topLevelTab, setTopLevelTab] = useState("measurement");
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-slate-600 p-5 gap-2">
-      {/* Main Content Area */}
-      <div className="flex-1 lg:flex-3 bg-slate-700 flex flex-col items-center justify-center rounded-lg p-4">
-        {/* Top Level Tabs */}
-        <div className="w-full bg-slate-800 rounded-lg p-1 flex gap-1 mb-4">
+    <div className="min-h-screen flex flex-col bg-slate-600 p-5 gap-2">
+      {/* Top Section - Tabs */}
+      <div className="bg-slate-800 rounded-lg p-2 flex flex-col gap-2">
+        {/* Row 1: Main tabs */}
+        <div className="flex gap-1">
           <button
-            onClick={() => setTopLevelTab("units")}
-            className={`flex-1 py-2 px-3 rounded-md transition-colors duration-200 text-xs font-medium cursor-pointer ${
-              topLevelTab === "units"
+            onClick={() => setTopLevelTab("measurement")}
+            className={`flex-1 py-2 px-3 rounded-md transition-colors duration-200 text-sm font-medium cursor-pointer ${
+              topLevelTab === "measurement"
                 ? "bg-slate-600 text-white"
                 : "text-slate-400 hover:text-white hover:bg-slate-700"
             }`}
           >
-            📐 واحدها
+            📐 Measurement
           </button>
           <button
             onClick={() => setTopLevelTab("whiteboard")}
-            className={`flex-1 py-2 px-3 rounded-md transition-colors duration-200 text-xs font-medium cursor-pointer ${
+            className={`flex-1 py-2 px-3 rounded-md transition-colors duration-200 text-sm font-medium cursor-pointer ${
               topLevelTab === "whiteboard"
                 ? "bg-slate-600 text-white"
                 : "text-slate-400 hover:text-white hover:bg-slate-700"
             }`}
           >
-            📝 تخته سفید
+            📝 Whiteboard
           </button>
         </div>
 
-        {/* Units Content - always rendered, hidden when whiteboard is active */}
-        <div
-          className="flex-1 w-full flex flex-col min-h-0"
-          style={{ display: topLevelTab === "units" ? "flex" : "none" }}
-        >
-          <div className="w-full bg-slate-800/50 rounded-lg p-1 flex gap-1 mb-4">
+        {/* Row 2: Unit tabs (only visible when Measurement is active) */}
+        {topLevelTab === "measurement" && (
+          <div className="flex gap-1">
             <button
               onClick={() => setActiveTab("earth")}
               className={`flex-1 py-1.5 px-2 rounded-md transition-colors duration-200 text-xs font-medium cursor-pointer ${
@@ -83,135 +80,133 @@ function Length() {
               💡 نور
             </button>
           </div>
-
-          <div className="flex-1 w-full min-h-0">
-            <div
-              style={{
-                display: activeTab === "earth" ? "block" : "none",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Earth />
-            </div>
-            <div
-              style={{
-                display: activeTab === "bar" ? "block" : "none",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <PlatinumView />
-            </div>
-            <div
-              style={{
-                display: activeTab === "atom" ? "block" : "none",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <RepeatingWaveView />
-            </div>
-            <div
-              style={{
-                display: activeTab === "light" ? "block" : "none",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <div className="flex items-center justify-center w-full h-full">
-                <h1 className="text-white text-3xl font-bold">💡 Light View</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Whiteboard Content - always rendered, hidden when units is active */}
-        <div
-          className="flex-1 w-full min-h-0"
-          style={{ display: topLevelTab === "whiteboard" ? "block" : "none" }}
-        >
-          <Whiteboard />
-        </div>
+        )}
       </div>
 
-      {/* Side Panel */}
-      <div className="flex-1 lg:flex-1 bg-slate-700 flex flex-col px-6 py-8 rounded-lg overflow-y-auto">
-        <h1 className="text-white text-2xl md:text-3xl font-bold mb-6 text-center">
-          تعریف طول در گذر زمان
-        </h1>
-
-        <div className="flex-1 flex flex-col items-center justify-center">
-          {topLevelTab === "units" && activeTab === "earth" && (
-            <div className="text-white text-center w-full">
-              <p className="text-white text-sm mb-4">تعریف اول</p>
-              <div className="bg-slate-800 rounded-lg p-6 w-full">
-                <p className="text-lg md:text-xl font-light leading-relaxed text-white">
-                  یک متر = 1/10,000,000 فاصله قطب تا استوا
-                </p>
-              </div>
-              <p className="text-white text-xs mt-6 italic">
-                به دلایل علمی، این تعریف زمینی کنار گذاشته شد
-              </p>
-            </div>
-          )}
-
-          {topLevelTab === "units" && activeTab === "bar" && (
-            <div className="text-white text-center w-full">
-              <p className="text-white text-sm mb-4">تعریف دوم</p>
-              <div className="bg-slate-800 rounded-lg p-6 w-full">
-                <p className="text-base md:text-lg font-light leading-relaxed text-white text-right">
-                  متر به صورت فاصله بین دو خراش در دو سر یک میله از جنس
-                  پلاتین-ایریدیم تعریف شد که در اداره بین‌المللی اوزان و
-                  مقیاس‌ها در پاریس نگهداری می‌شد و نمونه‌های دقیقی به
-                  آزمایشگاه‌های سراسر جهان فرستاده شد.
-                </p>
-                <p className="text-white text-xs mt-4 italic">
-                  این استاندارد قابل دسترس‌تر بود
-                </p>
-              </div>
-            </div>
-          )}
-
-          {topLevelTab === "units" && activeTab === "atom" && (
-            <div className="text-white text-center w-full">
-              <p className="text-white text-sm mb-4">تعریف سوم</p>
-              <div className="bg-slate-800 rounded-lg p-6 w-full">
-                <p className="text-lg md:text-xl font-light leading-relaxed text-white">
-                  یک متر = 1,650,763.73 طول موج
-                </p>
-              </div>
-              <p className="text-white text-xs mt-6 italic">
-                مبتنی بر طول موج کریپتون-۸۶
-              </p>
-            </div>
-          )}
-
-          {topLevelTab === "units" && activeTab === "light" && (
-            <div className="text-white text-center w-full">
-              <p className="text-white text-sm mb-4">تعریف چهارم</p>
-              <div className="bg-slate-800 rounded-lg p-6 w-full">
-                <p className="text-lg md:text-xl font-light leading-relaxed text-white">
-                  یک متر = 1/299,792,458 ثانیه نوری
-                </p>
-              </div>
-              <p className="text-white text-xs mt-6 italic">
-                مبتنی بر سرعت نور در خلا
-              </p>
-            </div>
-          )}
-
-          {topLevelTab === "whiteboard" && (
-            <div className="text-white text-center w-full">
-              <p className="text-white text-sm mb-4">تخته سفید</p>
-              <div className="bg-slate-800 rounded-lg p-6 w-full">
-                <p className="text-lg md:text-xl font-light leading-relaxed text-white">
-                  ✏️ برای نوشتن و رسم از تخته سفید استفاده کنید
-                </p>
+      {/* Main Content Area */}
+      <div className="flex-1 flex gap-2 min-h-0">
+        {topLevelTab === "measurement" ? (
+          <>
+            {/* Visual Area - Left */}
+            <div className="flex-1 bg-slate-700 rounded-lg p-4 flex items-center justify-center overflow-hidden">
+              <div className="w-full h-full">
+                <div
+                  style={{
+                    display: activeTab === "earth" ? "block" : "none",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <Earth />
+                </div>
+                <div
+                  style={{
+                    display: activeTab === "bar" ? "block" : "none",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <PlatinumView />
+                </div>
+                <div
+                  style={{
+                    display: activeTab === "atom" ? "block" : "none",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <RepeatingWaveView />
+                </div>
+                <div
+                  style={{
+                    display: activeTab === "light" ? "block" : "none",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <div className="flex items-center justify-center w-full h-full">
+                    <h1 className="text-white text-3xl font-bold">
+                      💡 Light View
+                    </h1>
+                  </div>
+                </div>
               </div>
             </div>
-          )}
-        </div>
+
+            {/* Info Panel - Right */}
+            <div className="w-80 bg-slate-700 flex flex-col px-6 py-8 rounded-lg overflow-y-auto">
+              <h1 className="text-white text-2xl md:text-3xl font-bold mb-6 text-center">
+                تعریف طول در گذر زمان
+              </h1>
+
+              <div className="flex-1 flex flex-col items-center justify-center">
+                {activeTab === "earth" && (
+                  <div className="text-white text-center w-full">
+                    <p className="text-white text-sm mb-4">تعریف اول</p>
+                    <div className="bg-slate-800 rounded-lg p-6 w-full">
+                      <p className="text-lg md:text-xl font-light leading-relaxed text-white">
+                        یک متر = 1/10,000,000 فاصله قطب تا استوا
+                      </p>
+                    </div>
+                    <p className="text-white text-xs mt-6 italic">
+                      به دلایل علمی، این تعریف زمینی کنار گذاشته شد
+                    </p>
+                  </div>
+                )}
+
+                {activeTab === "bar" && (
+                  <div className="text-white text-center w-full">
+                    <p className="text-white text-sm mb-4">تعریف دوم</p>
+                    <div className="bg-slate-800 rounded-lg p-6 w-full">
+                      <p className="text-base md:text-lg font-light leading-relaxed text-white text-right">
+                        متر به صورت فاصله بین دو خراش در دو سر یک میله از جنس
+                        پلاتین-ایریدیم تعریف شد که در اداره بین‌المللی اوزان و
+                        مقیاس‌ها در پاریس نگهداری می‌شد و نمونه‌های دقیقی به
+                        آزمایشگاه‌های سراسر جهان فرستاده شد.
+                      </p>
+                      <p className="text-white text-xs mt-4 italic">
+                        این استاندارد قابل دسترس‌تر بود
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === "atom" && (
+                  <div className="text-white text-center w-full">
+                    <p className="text-white text-sm mb-4">تعریف سوم</p>
+                    <div className="bg-slate-800 rounded-lg p-6 w-full">
+                      <p className="text-lg md:text-xl font-light leading-relaxed text-white">
+                        یک متر = 1,650,763.73 طول موج
+                      </p>
+                    </div>
+                    <p className="text-white text-xs mt-6 italic">
+                      مبتنی بر طول موج کریپتون-۸۶
+                    </p>
+                  </div>
+                )}
+
+                {activeTab === "light" && (
+                  <div className="text-white text-center w-full">
+                    <p className="text-white text-sm mb-4">تعریف چهارم</p>
+                    <div className="bg-slate-800 rounded-lg p-6 w-full">
+                      <p className="text-lg md:text-xl font-light leading-relaxed text-white">
+                        یک متر = 1/299,792,458 ثانیه نوری
+                      </p>
+                    </div>
+                    <p className="text-white text-xs mt-6 italic">
+                      مبتنی بر سرعت نور در خلا
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        ) : (
+          /* Whiteboard - Full width, no info panel */
+          <div className="flex-1 bg-slate-700 rounded-lg p-4">
+            <Whiteboard />
+          </div>
+        )}
       </div>
     </div>
   );
