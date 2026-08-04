@@ -5,11 +5,11 @@ import RepeatingWaveView from "../../components/RepeatingWaveView";
 import Whiteboard from "../../components/Whiteboard";
 import DefinitionDisplay from "../../components/DefinitionDisplay";
 import {
-  LAYOUT,
-  BUTTON,
-  TEXT,
-  UTILITY,
-  Z_INDEX,
+  layout,
+  button,
+  text,
+  utility,
+  zIndex,
 } from "../../utils/lengthStyles";
 import { UNIT_TABS, TOP_LEVEL_TABS, DEFINITIONS } from "../../utils/constants";
 
@@ -21,21 +21,21 @@ function Length() {
   const toggleDrawing = () => setIsDrawingMode(!isDrawingMode);
 
   const getTabClass = (isActive) =>
-    isActive ? BUTTON.ACTIVE : BUTTON.INACTIVE;
+    isActive ? button.active : button.inactive;
 
   const getDrawingButtonClass = () =>
-    isDrawingMode ? BUTTON.ACTIVE_DRAWING : BUTTON.INACTIVE_DRAWING;
+    isDrawingMode ? button.activeDrawing : button.inactiveDrawing;
 
   return (
-    <div className={LAYOUT.CONTAINER}>
+    <div className={layout.container}>
       {/* Top Section - Tabs */}
-      <div className={LAYOUT.TAB_CONTAINER}>
-        <div className={LAYOUT.TAB_WRAPPER}>
+      <div className={layout.tabContainer}>
+        <div className={layout.tabWrapper}>
           {TOP_LEVEL_TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setTopLevelTab(tab.id)}
-              className={`${BUTTON.TOP_LEVEL} ${getTabClass(topLevelTab === tab.id)}`}
+              className={`${button.topLevel} ${getTabClass(topLevelTab === tab.id)}`}
             >
               {tab.label}
             </button>
@@ -43,12 +43,12 @@ function Length() {
         </div>
 
         {topLevelTab === "measurement" && (
-          <div className={LAYOUT.TAB_WRAPPER}>
+          <div className={layout.tabWrapper}>
             {UNIT_TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`${BUTTON.UNIT} ${getTabClass(activeTab === tab.id)}`}
+                className={`${button.unit} ${getTabClass(activeTab === tab.id)}`}
               >
                 {tab.label}
               </button>
@@ -58,18 +58,18 @@ function Length() {
       </div>
 
       {/* Main Content Area */}
-      <div className={LAYOUT.MAIN_CONTENT}>
+      <div className={layout.mainContent}>
         {/* Measurement View */}
         <div
-          className={LAYOUT.MEASUREMENT_VIEW}
+          className={layout.measurementView}
           style={{ display: topLevelTab === "measurement" ? "flex" : "none" }}
         >
           {/* Visual Area - Left */}
-          <div className={LAYOUT.VISUAL_AREA}>
+          <div className={layout.visualArea}>
             <div
-              className={UTILITY.ABSOLUTE_INSET}
+              className={utility.absoluteInset}
               style={{
-                zIndex: isDrawingMode ? Z_INDEX.BEHIND : Z_INDEX.ON_TOP,
+                zIndex: isDrawingMode ? zIndex.behind : zIndex.onTop,
                 pointerEvents: isDrawingMode ? "none" : "auto",
               }}
             >
@@ -81,29 +81,29 @@ function Length() {
               )}
               {activeTab === "atom" && <RepeatingWaveView />}
               {activeTab === "light" && (
-                <div className={UTILITY.FLEX_CENTER}>
-                  <h1 className={TEXT.LIGHT_VIEW}>💡 Light View</h1>
+                <div className={utility.flexCenter}>
+                  <h1 className={text.lightView}>💡 Light View</h1>
                 </div>
               )}
             </div>
 
-            <div className={UTILITY.ABSOLUTE_INSET}>
+            <div className={utility.absoluteInset}>
               <Whiteboard transparent={true} hideUi={!isDrawingMode} />
             </div>
 
             <button
               onClick={toggleDrawing}
-              className={`${BUTTON.DRAWING_TOGGLE} ${getDrawingButtonClass()}`}
+              className={`${button.drawingToggle} ${getDrawingButtonClass()}`}
             >
               {isDrawingMode ? "✏️ Stop Drawing" : "✏️ Start Drawing"}
             </button>
           </div>
 
           {/* Info Panel - Right */}
-          <div className={LAYOUT.INFO_PANEL}>
-            <h1 className={TEXT.TITLE}>تعریف طول در گذر زمان</h1>
+          <div className={layout.infoPanel}>
+            <h1 className={text.title}>تعریف طول در گذر زمان</h1>
 
-            <div className={UTILITY.FLEX_COL}>
+            <div className={utility.flexCol}>
               <DefinitionDisplay
                 title={DEFINITIONS[activeTab].title}
                 content={DEFINITIONS[activeTab].content}
@@ -116,7 +116,7 @@ function Length() {
 
         {/* Whiteboard - Full width */}
         <div
-          className={LAYOUT.FULL_WHITEBOARD}
+          className={layout.fullWhiteboard}
           style={{ display: topLevelTab === "whiteboard" ? "block" : "none" }}
         >
           <Whiteboard transparent={false} hideUi={false} />
