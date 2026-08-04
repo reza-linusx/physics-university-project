@@ -3,14 +3,15 @@ import Earth from "../../components/Earth";
 import PlatinumView from "../../components/PlatinumView";
 import RepeatingWaveView from "../../components/RepeatingWaveView";
 import Whiteboard from "../../components/Whiteboard";
+import DefinitionDisplay from "../../components/DefinitionDisplay";
 import {
   LAYOUT,
   BUTTON,
   TEXT,
-  CARD,
   UTILITY,
   Z_INDEX,
 } from "../../utils/lengthStyles";
+import { UNIT_TABS, TOP_LEVEL_TABS, DEFINITIONS } from "../../utils/constants";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
@@ -30,46 +31,28 @@ function Length() {
       {/* Top Section - Tabs */}
       <div className={LAYOUT.TAB_CONTAINER}>
         <div className={LAYOUT.TAB_WRAPPER}>
-          <button
-            onClick={() => setTopLevelTab("measurement")}
-            className={`${BUTTON.TOP_LEVEL} ${getTabClass(topLevelTab === "measurement")}`}
-          >
-            📐 Measurement
-          </button>
-          <button
-            onClick={() => setTopLevelTab("whiteboard")}
-            className={`${BUTTON.TOP_LEVEL} ${getTabClass(topLevelTab === "whiteboard")}`}
-          >
-            📝 Whiteboard
-          </button>
+          {TOP_LEVEL_TABS.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setTopLevelTab(tab.id)}
+              className={`${BUTTON.TOP_LEVEL} ${getTabClass(topLevelTab === tab.id)}`}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         {topLevelTab === "measurement" && (
           <div className={LAYOUT.TAB_WRAPPER}>
-            <button
-              onClick={() => setActiveTab("earth")}
-              className={`${BUTTON.UNIT} ${getTabClass(activeTab === "earth")}`}
-            >
-              🌍 قطب تا استوا
-            </button>
-            <button
-              onClick={() => setActiveTab("bar")}
-              className={`${BUTTON.UNIT} ${getTabClass(activeTab === "bar")}`}
-            >
-              📏 میله پلاتین
-            </button>
-            <button
-              onClick={() => setActiveTab("atom")}
-              className={`${BUTTON.UNIT} ${getTabClass(activeTab === "atom")}`}
-            >
-              ⚛️ اتم
-            </button>
-            <button
-              onClick={() => setActiveTab("light")}
-              className={`${BUTTON.UNIT} ${getTabClass(activeTab === "light")}`}
-            >
-              💡 نور
-            </button>
+            {UNIT_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`${BUTTON.UNIT} ${getTabClass(activeTab === tab.id)}`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         )}
       </div>
@@ -121,64 +104,12 @@ function Length() {
             <h1 className={TEXT.TITLE}>تعریف طول در گذر زمان</h1>
 
             <div className={UTILITY.FLEX_COL}>
-              {activeTab === "earth" && (
-                <div className="text-white text-center w-full">
-                  <p className={TEXT.DEFINITION_TITLE}>تعریف اول</p>
-                  <div className={CARD.DEFINITION}>
-                    <p className={TEXT.DEFINITION_CONTENT}>
-                      یک متر = 1/10,000,000 فاصله قطب تا استوا
-                    </p>
-                  </div>
-                  <p className={TEXT.DEFINITION_NOTE}>
-                    به دلایل علمی، این تعریف زمینی کنار گذاشته شد
-                  </p>
-                </div>
-              )}
-
-              {activeTab === "bar" && (
-                <div className="text-white text-center w-full">
-                  <p className={TEXT.DEFINITION_TITLE}>تعریف دوم</p>
-                  <div className={CARD.DEFINITION}>
-                    <p className={TEXT.DEFINITION_CONTENT_RTL}>
-                      متر به صورت فاصله بین دو خراش در دو سر یک میله از جنس
-                      پلاتین-ایریدیم تعریف شد که در اداره بین‌المللی اوزان و
-                      مقیاس‌ها در پاریس نگهداری می‌شد و نمونه‌های دقیقی به
-                      آزمایشگاه‌های سراسر جهان فرستاده شد.
-                    </p>
-                  </div>
-                  <p className={TEXT.DEFINITION_NOTE_SMALL}>
-                    این استاندارد قابل دسترس‌تر بود
-                  </p>
-                </div>
-              )}
-
-              {activeTab === "atom" && (
-                <div className="text-white text-center w-full">
-                  <p className={TEXT.DEFINITION_TITLE}>تعریف سوم</p>
-                  <div className={CARD.DEFINITION}>
-                    <p className={TEXT.DEFINITION_CONTENT}>
-                      یک متر = 1,650,763.73 طول موج
-                    </p>
-                  </div>
-                  <p className={TEXT.DEFINITION_NOTE}>
-                    مبتنی بر طول موج کریپتون-۸۶
-                  </p>
-                </div>
-              )}
-
-              {activeTab === "light" && (
-                <div className="text-white text-center w-full">
-                  <p className={TEXT.DEFINITION_TITLE}>تعریف چهارم</p>
-                  <div className={CARD.DEFINITION}>
-                    <p className={TEXT.DEFINITION_CONTENT}>
-                      یک متر = 1/299,792,458 ثانیه نوری
-                    </p>
-                  </div>
-                  <p className={TEXT.DEFINITION_NOTE}>
-                    مبتنی بر سرعت نور در خلا
-                  </p>
-                </div>
-              )}
+              <DefinitionDisplay
+                title={DEFINITIONS[activeTab].title}
+                content={DEFINITIONS[activeTab].content}
+                note={DEFINITIONS[activeTab].note}
+                rtl={DEFINITIONS[activeTab].rtl}
+              />
             </div>
           </div>
         </div>

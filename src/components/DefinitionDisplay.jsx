@@ -1,5 +1,5 @@
 import React from "react";
-import { TEXT, CARD } from "../../../styles/tailwindStyles";
+import { TEXT, CARD } from "../utils/lengthStyles";
 
 function DefinitionDisplay({ title, content, note, rtl = false }) {
   const contentClass = rtl
