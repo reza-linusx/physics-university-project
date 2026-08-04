@@ -5,7 +5,7 @@ export const layout = {
   mainContent: "flex-1 flex flex-col lg:flex-row gap-2 min-h-0",
   measurementView: "flex-1 flex flex-col lg:flex-row gap-2 min-h-0",
   visualArea:
-    "flex-1 bg-slate-700 rounded-lg p-2 sm:p-4 relative overflow-hidden min-h-[300px] lg:min-h-0",
+    "flex-1 bg-slate-700 rounded-lg p-2 sm:p-4 relative overflow-hidden min-h-[300px] lg:min-h-0 cursor-grab",
   infoPanel:
     "lg:w-80 w-full bg-slate-700 flex flex-col px-4 sm:px-6 py-4 sm:py-8 rounded-lg overflow-y-auto max-h-[300px] lg:max-h-none",
   fullWhiteboard: "flex-1 bg-slate-700 rounded-lg p-2 sm:p-4 min-h-0",
