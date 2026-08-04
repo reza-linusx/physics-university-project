@@ -95,7 +95,7 @@ function Length() {
               onClick={toggleDrawing}
               className={`${button.drawingToggle} ${getDrawingButtonClass()}`}
             >
-              {isDrawingMode ? "✏️ غیرفعالسازی تخته" : "✏️ فعالسازی تخته"}
+              {isDrawingMode ? "⛔" : "✏️"}
             </button>
           </div>
 

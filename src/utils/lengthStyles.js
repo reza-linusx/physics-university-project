@@ -6,7 +6,8 @@ export const layout = {
   measurementView: "flex-1 flex flex-col md:flex-row gap-2",
   visualArea:
     "flex-3 bg-gray-700 rounded-lg p-2 relative overflow-hidden lg:min-h-0 cursor-grab",
-  infoPanel: "flex-1 bg-gray-700 flex flex-col items-center justify-center p-4 rounded-lg",
+  infoPanel:
+    "flex-1 bg-gray-700 flex flex-col items-center justify-center p-4 rounded-lg",
   fullWhiteboard: "flex-1 bg-slate-700 rounded-lg p-2 sm:p-4 min-h-0",
 };
 
@@ -15,10 +16,10 @@ export const button = {
     "flex-1 min-w-[100px] py-3 px-3 rounded-md transition-colors duration-200 text-xs sm:text-sm font-medium cursor-pointer border border-white/10",
   unit: "flex-1 min-w-[70px] py-3.5 px-2 rounded-md transition-colors duration-200 text-[10px] sm:text-xs font-medium cursor-pointer border border-white/10",
   drawingToggle:
-    "cursor-pointer absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg shadow-lg transition-colors duration-200 font-medium text-xs sm:text-sm",
+    "cursor-pointer absolute bottom-1/2 left-2 py-2.5 px-1.5 rounded-full w-10 h-10 z-10 flex items-center justify-center",
   active: "bg-neutral-500 text-white",
   inactive: "text-slate-400 hover:text-white hover:bg-mist-400",
-  activeDrawing: "bg-red-600 hover:bg-red-700 text-white",
+  activeDrawing: "bg-red-300 hover:bg-red-700 text-white",
   inactiveDrawing: "bg-slate-600 hover:bg-slate-500 text-white",
 };
 
