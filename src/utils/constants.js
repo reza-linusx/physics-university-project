@@ -34,6 +34,6 @@ export const UNIT_TABS = [
 ];
 
 export const TOP_LEVEL_TABS = [
-  { id: "measurement", label: "📐 Measurement" },
-  { id: "whiteboard", label: "📝 Whiteboard" },
+  { id: "measurement", label: "📐 اندازه گیری" },
+  { id: "whiteboard", label: "📝 وایت برد" },
 ];

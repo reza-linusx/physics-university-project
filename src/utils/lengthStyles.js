@@ -16,7 +16,7 @@ export const button = {
     "flex-1 min-w-[100px] py-3 px-3 rounded-md transition-colors duration-200 text-xs sm:text-sm font-medium cursor-pointer border border-white/10",
   unit: "flex-1 min-w-[70px] py-3.5 px-2 rounded-md transition-colors duration-200 text-[10px] sm:text-xs font-medium cursor-pointer border border-white/10",
   drawingToggle:
-    "absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg shadow-lg transition-colors duration-200 font-medium text-xs sm:text-sm",
+    "cursor-pointer absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg shadow-lg transition-colors duration-200 font-medium text-xs sm:text-sm",
   active: "bg-neutral-500 text-white",
   inactive: "text-slate-400 hover:text-white hover:bg-mist-400",
   activeDrawing: "bg-red-600 hover:bg-red-700 text-white",
