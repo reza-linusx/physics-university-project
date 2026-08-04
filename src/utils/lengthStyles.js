@@ -1,6 +1,6 @@
 export const layout = {
   container: "min-h-screen flex flex-col p-2 gap-2 bg-slate-500",
-  tabContainer: "bg-slate-800 rounded-lg p-2 flex flex-col gap-2",
+  tabContainer: "bg-gray-700 rounded-lg p-2 flex flex-col gap-2",
   tabWrapper: "flex flex-wrap gap-1",
   mainContent: "flex-1 flex flex-col lg:flex-row gap-2 min-h-0",
   measurementView: "flex-1 flex flex-col lg:flex-row gap-2 min-h-0",
