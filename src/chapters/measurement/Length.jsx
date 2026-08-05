@@ -114,6 +114,14 @@ function Length() {
           </div>
         </div>
 
+        <div style={{ display: topLevelTab === "mass" ? "flex" : "none" }}>
+          <h1>this is mass</h1>
+        </div>
+
+        <div style={{ display: topLevelTab === "time" ? "flex" : "none" }}>
+          <h1>this is time</h1>
+        </div>
+
         {/* Whiteboard - Full width */}
         <div
           className={layout.fullWhiteboard}
