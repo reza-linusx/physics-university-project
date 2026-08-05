@@ -8,7 +8,7 @@ function Globe() {
   const globeRef = useRef();
   const texture = useLoader(TextureLoader, earthTexture);
 
-  const radius = 2.03;
+  const radius = 2.02;
   const meridianPoints = [];
   const segments = 30;
 
@@ -36,8 +36,8 @@ function Globe() {
       <Sphere args={[2, 96, 96]}>
         <meshStandardMaterial map={texture} roughness={0.8} metalness={0.0} />
       </Sphere>
-      <Line points={meridianPoints} color="#ff6b35" lineWidth={6} />
-      <Line points={equatorPoints} color="#4ade80" lineWidth={4} />
+      <Line points={meridianPoints} color="#ff6b35" lineWidth={4} />
+      <Line points={equatorPoints} color="#4ade80" lineWidth={2} />
     </group>
   );
 }
