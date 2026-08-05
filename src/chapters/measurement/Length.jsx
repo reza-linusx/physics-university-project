@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Earth from "../../components/Earth";
+import GlobeView from "../../components/GlobeView";
 import PlatinumView from "../../components/PlatinumView";
 import RepeatingWaveView from "../../components/RepeatingWaveView";
 import Whiteboard from "../../components/Whiteboard";
@@ -74,7 +74,7 @@ function Length() {
               }}
             >
               {activeTab === "earth" && (
-                <Earth controlsEnabled={!isDrawingMode} />
+                <GlobeView controlsEnabled={!isDrawingMode} />
               )}
               {activeTab === "bar" && (
                 <PlatinumView controlsEnabled={!isDrawingMode} />
