@@ -5,7 +5,6 @@ import { TextureLoader } from "three";
 import earthTexture from "../assets/earth.jpg";
 
 function Globe() {
-  const globeRef = useRef();
   const texture = useLoader(TextureLoader, earthTexture);
 
   const radius = 2.02;
@@ -32,13 +31,13 @@ function Globe() {
   }
 
   return (
-    <group ref={globeRef}>
+    <>
       <Sphere args={[2, 96, 96]}>
         <meshStandardMaterial map={texture} roughness={0.8} metalness={0.0} />
       </Sphere>
       <Line points={meridianPoints} color="#ff6b35" lineWidth={4} />
       <Line points={equatorPoints} color="#4ade80" lineWidth={2} />
-    </group>
+    </>
   );
 }
 
