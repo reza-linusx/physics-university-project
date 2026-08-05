@@ -3,7 +3,7 @@ export const layout = {
   tabContainer: "bg-gray-700 rounded-lg p-2 flex flex-col gap-2",
   tabWrapper: "flex flex-wrap gap-1",
   mainContent: "flex flex-1",
-  measurementView: "flex-1 flex flex-col md:flex-row gap-2",
+  lengthView: "flex-1 flex flex-col md:flex-row gap-2",
   visualArea:
     "flex-3 bg-gray-700 rounded-lg p-2 relative overflow-hidden lg:min-h-0 cursor-grab",
   infoPanel:

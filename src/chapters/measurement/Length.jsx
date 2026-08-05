@@ -15,7 +15,7 @@ import { UNIT_TABS, TOP_LEVEL_TABS, DEFINITIONS } from "../../utils/constants";
 
 function Length() {
   const [activeTab, setActiveTab] = useState("earth");
-  const [topLevelTab, setTopLevelTab] = useState("measurement");
+  const [topLevelTab, setTopLevelTab] = useState("length");
   const [isDrawingMode, setIsDrawingMode] = useState(false);
 
   const toggleDrawing = () => setIsDrawingMode(!isDrawingMode);
@@ -42,7 +42,7 @@ function Length() {
           ))}
         </div>
 
-        {topLevelTab === "measurement" && (
+        {topLevelTab === "length" && (
           <div className={layout.tabWrapper}>
             {UNIT_TABS.map((tab) => (
               <button
@@ -61,8 +61,8 @@ function Length() {
       <div className={layout.mainContent}>
         {/* Measurement View */}
         <div
-          className={layout.measurementView}
-          style={{ display: topLevelTab === "measurement" ? "flex" : "none" }}
+          className={layout.lengthView}
+          style={{ display: topLevelTab === "length" ? "flex" : "none" }}
         >
           {/* Visual Area - Left */}
           <div className={layout.visualArea}>
