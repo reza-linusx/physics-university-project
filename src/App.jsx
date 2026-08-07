@@ -5,6 +5,7 @@ import { ViewContext } from "./context/ViewContext";
 import Sidebar from "./components/layout/Sidebar";
 import RepeatingWaveView from "./components/RepeatingWaveView";
 import Whiteboard from "./components/Whiteboard";
+import InfoPanel from "./components/layout/InfoPanel";
 
 function App() {
   const { view, overlayActivated } = useContext(ViewContext);
@@ -36,6 +37,8 @@ function App() {
           <Whiteboard />
         </div>
       </div>
+
+      <InfoPanel />
     </div>
   );
 }
