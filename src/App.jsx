@@ -32,7 +32,7 @@ function App() {
         </div>
 
         <div
-          className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
+          className={`p-2 absolute inset-0 rounded-lg transition-opacity duration-300 ${
             view === "whiteboard" ? "absolute" : "hidden"
           }`}
         >
