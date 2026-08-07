@@ -6,9 +6,11 @@ import Sidebar from "./components/layout/Sidebar";
 import RepeatingWaveView from "./components/RepeatingWaveView";
 import Whiteboard from "./components/Whiteboard";
 import InfoPanel from "./components/layout/InfoPanel";
+import { DEFINITIONS } from "./utils/constants";
 
 function App() {
   const { view, overlayActivated } = useContext(ViewContext);
+  console.log(DEFINITIONS[view].title);
 
   return (
     <div className="min-h-screen bg-gray-800 text-white flex relative">
@@ -38,7 +40,12 @@ function App() {
         </div>
       </div>
 
-      {view !== "whiteboard" && <InfoPanel />}
+      {view !== "whiteboard" && (
+        <InfoPanel
+          title={DEFINITIONS[view].title}
+          description={DEFINITIONS[view].content}
+        />
+      )}
     </div>
   );
 }
