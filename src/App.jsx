@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import GlobeView from "./components/GlobeView";
 import PlatinumView from "./components/PlatinumView";
 import { ViewContext } from "./context/ViewContext";
@@ -7,22 +7,37 @@ import RepeatingWaveView from "./components/RepeatingWaveView";
 import Whiteboard from "./components/Whiteboard";
 
 function App() {
-  const { view, setView } = useContext(ViewContext);
+  const { view } = useContext(ViewContext);
 
   return (
-    <div className="min-h-screen bg-gray-800 text-white flex">
+    <div className="min-h-screen bg-gray-800 text-white flex relative">
       <Sidebar />
-      <div className="flex-1 flex items-center justify-center p-5 z-10 max-w-screen">
+      <div className="flex-1 relative p-5 z-10 max-w-screen h-screen overflow-hidden">
+        {/* 1. THE BACKGROUND LAYER (Always there, behind everything) */}
+        <div className="absolute inset-0 z-40">
+          <Whiteboard transparent />
+        </div>
+
+        <div className="absolute inset-0 rounded-lg">
+          {view === "globe" && <GlobeView />}
+          {view === "platinumBar" && <PlatinumView />}
+          {view === "wave" && <RepeatingWaveView />}
+          {view === "light" && (
+            <div className="w-full h-full flex items-center justify-center text-2xl">
+              <h1>تعریف بر اساس سرعت نور</h1>
+            </div>
+          )}
+        </div>
+
         <div
-          className={`${view === "whiteboard" ? "block" : "hidden"} w-full h-full`}
+          className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
+            view === "whiteboard"
+              ? "opacity-100 z-20"
+              : "opacity-0 z-0 pointer-events-none"
+          }`}
         >
           <Whiteboard />
         </div>
-
-        {view === "globe" && <GlobeView />}
-        {view === "platinumBar" && <PlatinumView />}
-        {view === "wave" && <RepeatingWaveView />}
-        {view === "light" && <h1>تعریف بر اساس سرعت نور</h1>}
       </div>
     </div>
   );
