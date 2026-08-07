@@ -21,7 +21,7 @@ import {
 import { ViewContext } from "../../context/ViewContext";
 
 function Sidebar() {
-  const { view, setView } = useContext(ViewContext);
+  const { view, setView, overlayActivated } = useContext(ViewContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openMenus, setOpenMenus] = useState({
     length: false,
@@ -92,7 +92,9 @@ function Sidebar() {
               </li>
 
               <li>
-                <button className={`${linkStyle} w-full text-left }`}>
+                <button
+                  className={`${linkStyle} w-full text-left ${overlayActivated ? "bg-gray-700" : ""}  }`}
+                >
                   <PiPencilLineFill className="w-5 h-5" /> نوشتن روی صفحه
                 </button>
               </li>
