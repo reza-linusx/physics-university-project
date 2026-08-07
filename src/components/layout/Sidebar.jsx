@@ -85,7 +85,10 @@ function Sidebar() {
               {/* Whiteboard */}
               <li>
                 <button
-                  onClick={() => handleNavigation("whiteboard")}
+                  onClick={() => {
+                    handleNavigation("whiteboard");
+                    setOverlayActivated(false);
+                  }}
                   className={`${linkStyle} w-full text-left ${view === "whiteboard" ? "bg-gray-700" : ""}`}
                 >
                   <PiChalkboardSimple className="w-5 h-5" /> وایت برد
@@ -127,7 +130,7 @@ function Sidebar() {
                         فاصله قطب تا استوا
                       </button>
                     </li>
-                    {/* ...rest of your length links... */}
+
                     <li>
                       <button
                         onClick={() => handleNavigation("platinumBar")}
