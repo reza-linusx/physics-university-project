@@ -7,14 +7,13 @@ import RepeatingWaveView from "./components/RepeatingWaveView";
 import Whiteboard from "./components/Whiteboard";
 
 function App() {
-  const { view } = useContext(ViewContext);
+  const { view, overlayActivated } = useContext(ViewContext);
 
   return (
     <div className="min-h-screen bg-gray-800 text-white flex relative">
       <Sidebar />
       <div className="flex-1 relative p-5 z-10 max-w-screen h-screen overflow-hidden">
-        {/* 1. THE BACKGROUND LAYER (Always there, behind everything) */}
-        <div className="absolute inset-0 z-40">
+        <div className={`absolute inset-0 ${overlayActivated ? "z-30" : ""} `}>
           <Whiteboard transparent />
         </div>
 
