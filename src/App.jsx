@@ -10,7 +10,7 @@ import { DEFINITIONS } from "./utils/constants";
 
 function App() {
   const { view, overlayActivated } = useContext(ViewContext);
-  console.log(DEFINITIONS[view].title);
+  const definition = view !== "whiteboard" ? DEFINITIONS[view] : null;
 
   return (
     <div className="min-h-screen bg-gray-800 text-white flex relative">
@@ -40,11 +40,8 @@ function App() {
         </div>
       </div>
 
-      {view !== "whiteboard" && (
-        <InfoPanel
-          title={DEFINITIONS[view].title}
-          description={DEFINITIONS[view].content}
-        />
+      {definition && (
+        <InfoPanel title={definition.title} description={definition.content} />
       )}
     </div>
   );
