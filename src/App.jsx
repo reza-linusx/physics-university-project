@@ -30,9 +30,7 @@ function App() {
 
         <div
           className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
-            view === "whiteboard"
-              ? "opacity-100 z-20"
-              : "opacity-0 z-0 pointer-events-none"
+            view === "whiteboard" ? "absolute" : "hidden"
           }`}
         >
           <Whiteboard />
