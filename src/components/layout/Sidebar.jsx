@@ -16,6 +16,7 @@ import {
   PiAtom,
   PiChartBar,
   PiList,
+  PiPencilLineFill,
 } from "react-icons/pi";
 import { ViewContext } from "../../context/ViewContext";
 
@@ -87,6 +88,12 @@ function Sidebar() {
                   className={`${linkStyle} w-full text-left ${view === "whiteboard" ? "bg-gray-700" : ""}`}
                 >
                   <PiChalkboardSimple className="w-5 h-5" /> وایت برد
+                </button>
+              </li>
+
+              <li>
+                <button className={`${linkStyle} w-full text-left }`}>
+                  <PiPencilLineFill className="w-5 h-5" /> نوشتن روی صفحه
                 </button>
               </li>
 
