@@ -110,18 +110,15 @@ function Sidebar() {
                   } ${view === "whiteboard" ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   {view === "whiteboard" ? (
-                    // When on Whiteboard: Show disabled icon + text
                     <>
                       <PiPencilSimpleSlash className="w-5 h-5" /> نوشتن روی صفحه
                       (غیرفعال)
                     </>
                   ) : overlayActivated ? (
-                    // When Overlay is ON: Show an Eye icon + "Disable"
                     <>
                       <PiEyeFill className="w-5 h-5" /> فعالسازی شکل
                     </>
                   ) : (
-                    // When Overlay is OFF: Show a Pencil icon + "Enable"
                     <>
                       <PiPencilLineFill className="w-5 h-5" /> نوشتن روی صفحه
                     </>
