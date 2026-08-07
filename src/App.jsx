@@ -14,7 +14,7 @@ function App() {
       <Sidebar />
       <div className="flex-1 relative p-5 z-10 max-w-screen h-screen overflow-hidden">
         <div className={`absolute inset-0 ${overlayActivated ? "z-30" : ""} `}>
-          <Whiteboard transparent />
+          <Whiteboard transparent hideUi={!overlayActivated} />
         </div>
 
         <div className="absolute inset-0 rounded-lg">
