@@ -17,6 +17,8 @@ import {
   PiChartBar,
   PiList,
   PiPencilLineFill,
+  PiEyeFill,
+  PiPencilSimpleSlash,
 } from "react-icons/pi";
 import { ViewContext } from "../../context/ViewContext";
 
@@ -98,12 +100,32 @@ function Sidebar() {
               <li>
                 <button
                   onClick={() => {
-                    setOverlayActivated(!overlayActivated);
+                    if (view !== "whiteboard") {
+                      setOverlayActivated(!overlayActivated);
+                    }
                   }}
-                  className={`${linkStyle} w-full text-left ${overlayActivated ? "bg-gray-700" : ""}}`}
+                  disabled={view === "whiteboard"}
+                  className={`${linkStyle} w-full text-left transition-colors ${
+                    overlayActivated ? "bg-gray-700" : ""
+                  } ${view === "whiteboard" ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
-                  <PiPencilLineFill className="w-5 h-5" />{" "}
-                  {overlayActivated ? "غیر فعال کردن" : "نوشتن روی صفحه"}
+                  {view === "whiteboard" ? (
+                    // When on Whiteboard: Show disabled icon + text
+                    <>
+                      <PiPencilSimpleSlash className="w-5 h-5" /> نوشتن روی صفحه
+                      (غیرفعال)
+                    </>
+                  ) : overlayActivated ? (
+                    // When Overlay is ON: Show an Eye icon + "Disable"
+                    <>
+                      <PiEyeFill className="w-5 h-5" /> فعالسازی شکل
+                    </>
+                  ) : (
+                    // When Overlay is OFF: Show a Pencil icon + "Enable"
+                    <>
+                      <PiPencilLineFill className="w-5 h-5" /> نوشتن روی صفحه
+                    </>
+                  )}
                 </button>
               </li>
 
