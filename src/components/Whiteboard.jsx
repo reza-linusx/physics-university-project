@@ -1,6 +1,7 @@
 import React from "react";
 import { Tldraw } from "tldraw";
 import "tldraw/tldraw.css";
+import "./whiteboard.css"
 
 function Whiteboard({ transparent = false, hideUi = false }) {
   const components = transparent ? { Background: () => null } : undefined;
