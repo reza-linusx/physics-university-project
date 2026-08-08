@@ -2,14 +2,11 @@ import React, { useContext } from "react";
 import { ViewContext } from "./context/ViewContext";
 import Sidebar from "./components/layout/Sidebar";
 import Whiteboard from "./components/Whiteboard";
-import InfoPanel from "./components/layout/InfoPanel";
-import { DEFINITIONS } from "./utils/constants";
 import Content from "./components/layout/Content";
+import DefinitionPanel from "./components/layout/DefinitionPanel";
 
 function App() {
   const { view, overlayActivated } = useContext(ViewContext);
-  const definition = view !== "whiteboard" ? DEFINITIONS[view] : null;
-
   return (
     <div className="min-h-screen bg-gray-800 text-white flex relative">
       <Sidebar />
@@ -28,10 +25,7 @@ function App() {
           <Whiteboard />
         </div>
       </div>
-
-      {definition && (
-        <InfoPanel title={definition.title} description={definition.content} />
-      )}
+      <DefinitionPanel />
     </div>
   );
 }
