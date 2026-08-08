@@ -7,7 +7,7 @@ export default function OverlayWhiteboard() {
   const { view, overlayActivated } = useContext(ViewContext);
   return (
     <div className={`absolute inset-0 ${overlayActivated ? "z-30" : ""} `}>
-      <Whiteboard transparent hideUi={!overlayActivated} />
+      <Whiteboard perKey={"overlay"} transparent hideUi={!overlayActivated} />
     </div>
   );
 }

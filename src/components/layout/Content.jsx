@@ -5,11 +5,13 @@ import PlatinumCylinderView from "../PlatinumCylinderView";
 
 import { useContext } from "react";
 import { ViewContext } from "../../context/ViewContext";
+import MainWhiteboard from "../MainWhiteboard";
 
 function Content() {
   const { view } = useContext(ViewContext);
   return (
     <div className="absolute inset-0 rounded-lg">
+      {view === "whiteboard" && <MainWhiteboard />}
       {view === "globe" && <GlobeView />}
       {view === "platinumBar" && <PlatinumView />}
       {view === "wave" && <RepeatingWaveView />}

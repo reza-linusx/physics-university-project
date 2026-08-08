@@ -17,7 +17,6 @@ function App() {
       <div className="flex-1 relative p-5 max-w-screen h-screen overflow-hidden">
         <OverlayWhiteboard />
         <Content />
-        <MainWhiteboard />
       </div>
       <DefinitionPanel />
     </div>

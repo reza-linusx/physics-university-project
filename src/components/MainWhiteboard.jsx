@@ -11,7 +11,7 @@ export default function MainWhiteboard() {
         view === "whiteboard" ? "absolute" : "hidden"
       }`}
     >
-      <Whiteboard />
+      <Whiteboard perKey={"main"} />
     </div>
   );
 }
