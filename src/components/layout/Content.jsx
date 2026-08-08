@@ -3,7 +3,11 @@ import PlatinumView from "../PlatinumView";
 import RepeatingWaveView from "../RepeatingWaveView";
 import PlatinumCylinderView from "../PlatinumCylinderView";
 
-function Content({ view }) {
+import { useContext } from "react";
+import { ViewContext } from "../../context/ViewContext";
+
+function Content() {
+  const { view } = useContext(ViewContext);
   return (
     <div className="absolute inset-0 rounded-lg">
       {view === "globe" && <GlobeView />}
