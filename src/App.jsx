@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
-import GlobeView from "./components/GlobeView";
-import PlatinumView from "./components/PlatinumView";
 import { ViewContext } from "./context/ViewContext";
 import Sidebar from "./components/layout/Sidebar";
-import RepeatingWaveView from "./components/RepeatingWaveView";
 import Whiteboard from "./components/Whiteboard";
 import InfoPanel from "./components/layout/InfoPanel";
 import { DEFINITIONS } from "./utils/constants";
-import PlatinumCylinderView from "./components/PlatinumCylinderView";
+import Content from "./components/layout/Content";
 
 function App() {
   const { view, overlayActivated } = useContext(ViewContext);
@@ -21,17 +18,7 @@ function App() {
           <Whiteboard transparent hideUi={!overlayActivated} />
         </div>
 
-        <div className="absolute inset-0 rounded-lg">
-          {view === "globe" && <GlobeView />}
-          {view === "platinumBar" && <PlatinumView />}
-          {view === "wave" && <RepeatingWaveView />}
-          {view === "light" && (
-            <div className="w-full h-full flex items-center justify-center text-2xl">
-              <h1>تعریف بر اساس سرعت نور</h1>
-            </div>
-          )}
-          {view === "cylinder" && <PlatinumCylinderView />}
-        </div>
+        <Content view={view} />
 
         <div
           className={`p-2 absolute inset-0 rounded-lg transition-opacity duration-300 ${
