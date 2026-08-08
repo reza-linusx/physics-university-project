@@ -195,7 +195,13 @@ function Sidebar() {
                 {openMenus.mass && (
                   <ul className="pl-6 space-y-1 mt-1 border-l border-gray-700 ml-2">
                     <li>
-                      <a className={linkStyle} href="#">
+                      <a
+                        className={`${linkStyle} ${view === "cylinder" ? "bg-gray-700" : ""}`}
+                        href="#"
+                        onClick={() => {
+                          setView("cylinder");
+                        }}
+                      >
                         <PiCylinder className="w-5 h-5" />
                         استوانه پلاتین-ایریدیوم
                       </a>
