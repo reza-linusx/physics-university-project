@@ -17,9 +17,11 @@ function GlobeView({ controlsEnabled = true }) {
         enablePan={false}
         autoRotate={false}
         minDistance={3.5}
-        maxDistance={10}
+        maxDistance={8}
         target={[0, 0, 0]}
         enabled={controlsEnabled}
+        makeDefault
+        enableDamping={false}
       />
     </Canvas>
   );
