@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import React, { useMemo } from "react";
+import { useLoader } from "@react-three/fiber";
 import { Sphere, Line } from "@react-three/drei";
 import { TextureLoader } from "three";
 import earthTexture from "../assets/earth.jpg";
@@ -7,28 +7,37 @@ import earthTexture from "../assets/earth.jpg";
 function Globe() {
   const texture = useLoader(TextureLoader, earthTexture);
 
-  const radius = 2.02;
-  const meridianPoints = [];
-  const segments = 30;
+  const meridianPoints = useMemo(() => {
+    const points = [];
+    const radius = 2.02;
+    const segments = 24;
 
-  for (let i = 0; i <= segments; i++) {
-    const t = i / segments;
-    const angle = (t * Math.PI) / 2;
-    const x = radius * Math.sin(angle);
-    const y = radius * Math.cos(angle);
-    meridianPoints.push([x, y, 0]);
-  }
+    for (let i = 0; i <= segments; i++) {
+      const t = i / segments;
+      const angle = (t * Math.PI) / 2;
+      const x = radius * Math.sin(angle);
+      const y = radius * Math.cos(angle);
+      points.push([x, y, 0]);
+    }
 
-  const equtorRadius = 2.01;
-  const equatorPoints = [];
-  const equatorSegments = 60;
-  for (let i = 0; i <= equatorSegments; i++) {
-    const theta = (i / equatorSegments) * Math.PI * 2;
-    const x = equtorRadius * Math.cos(theta);
-    const y = 0;
-    const z = equtorRadius * Math.sin(theta);
-    equatorPoints.push([x, y, z]);
-  }
+    return points;
+  }, []);
+
+  const equatorPoints = useMemo(() => {
+    const points = [];
+    const equtorRadius = 2.01;
+    const equatorSegments = 36;
+
+    for (let i = 0; i <= equatorSegments; i++) {
+      const theta = (i / equatorSegments) * Math.PI * 2;
+      const x = equtorRadius * Math.cos(theta);
+      const y = 0;
+      const z = equtorRadius * Math.sin(theta);
+      points.push([x, y, z]);
+    }
+
+    return points;
+  }, []);
 
   return (
     <>
