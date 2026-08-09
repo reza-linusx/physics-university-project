@@ -42,7 +42,12 @@ function Globe() {
   return (
     <>
       <Sphere args={[2, 48, 48]}>
-        <meshStandardMaterial map={texture} roughness={0.8} metalness={0.0} />
+        <meshStandardMaterial
+          map={texture}
+          roughness={0.95}
+          metalness={0.0}
+          emissive={0x000000}
+        />
       </Sphere>
       <Line points={meridianPoints} color="#ff6b35" lineWidth={4} />
       <Line points={equatorPoints} color="#4ade80" lineWidth={2} />
