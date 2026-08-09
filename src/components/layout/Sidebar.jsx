@@ -27,7 +27,7 @@ function Sidebar() {
     useContext(ViewContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [openMenus, setOpenMenus] = useState({
-    length: false,
+    length: true,
     mass: false,
   });
 
