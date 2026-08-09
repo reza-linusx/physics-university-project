@@ -9,9 +9,8 @@ function GlobeView({ controlsEnabled = true }) {
       className="w-full h-screen"
       camera={{ position: [3.8, 2.5, 6], fov: 40 }}
     >
-      <ambientLight intensity={0.8} />
-      <directionalLight position={[5, 5, 5]} intensity={0.3} />
-      <directionalLight position={[-5, -5, -5]} intensity={0.2} />
+      <ambientLight intensity={0.7} />
+      <directionalLight position={[5, 5, 5]} intensity={0.4} />
       <Globe />
       <OrbitControls
         enableZoom={true}
