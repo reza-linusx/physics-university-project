@@ -20,7 +20,7 @@ export default function InfoPanel({ title, description }) {
 
       <div
         className={`
-          fixed lg:relative top-0 right-0 h-full min-h-screen w-80 
+          fixed lg:relative top-0 right-0 h-full min-h-screen w-75 
           bg-gray-800 border-l border-gray-700 p-4 text-center overflow-y-auto
           transition-transform duration-300 ease-in-out z-40
           flex flex-col shadow-2xl lg:shadow-none
@@ -31,7 +31,9 @@ export default function InfoPanel({ title, description }) {
         `}
       >
         <div className="flex justify-between items-center border-b-2 border-gray-700 pb-3 mb-4">
-          <h2 className="text-lg font-semibold text-gray-200">اطلاعات</h2>
+          <h2 className="text-lg font-semibold text-gray-200 w-full text-center">
+            اطلاعات
+          </h2>
 
           <button
             onClick={() => setPanelOpen(false)}
