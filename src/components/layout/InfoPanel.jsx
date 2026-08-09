@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { PiCaretRight, PiCaretLeft, PiX } from "react-icons/pi";
 
+import { MathJax } from "better-react-mathjax";
+
 export default function InfoPanel({ title, description }) {
   const [panelOpen, setPanelOpen] = useState(false);
 
@@ -48,7 +50,7 @@ export default function InfoPanel({ title, description }) {
           <div className="border-b-2 border-gray-700 pb-5 mb-4">
             <h1 className="p-4 bg-slate-700 rounded-lg mb-4">{title}</h1>
             <p className="p-4 bg-slate-700 rounded-lg min-h-[80px]">
-              {description}
+              <MathJax>{description}</MathJax>
             </p>
           </div>
 
