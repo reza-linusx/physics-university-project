@@ -14,8 +14,8 @@ function PlatinumCylinderView({ controlsEnabled = true }) {
         enableZoom={true}
         enablePan={false}
         autoRotate={false}
-        minDistance={0.5}
-        maxDistance={15}
+        minDistance={3}
+        maxDistance={8}
         target={[0, 0, 0]}
         enabled={controlsEnabled}
       />
