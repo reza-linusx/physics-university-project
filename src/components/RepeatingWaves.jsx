@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Line } from "@react-three/drei";
 
 function RepeatingWaves() {
-  const points = [];
-  const marker1 = [
-    [-2, 0, 0],
-    [-2 + 4 / 3, 0, 0],
-  ];
-  const marker2 = [
-    [-2 + 4 / 3, 0, 0],
-    [-2 + 8 / 3, 0, 0],
-  ];
-  const marker3 = [
-    [-2 + 8 / 3, 0, 0],
-    [2, 0, 0],
-  ];
-  const steps = 200;
+  const marker1 = useMemo(
+    () => [
+      [-2, 0, 0],
+      [-2 + 4 / 3, 0, 0],
+    ],
+    [],
+  );
+  const marker2 = useMemo(
+    () => [
+      [-2 + 4 / 3, 0, 0],
+      [-2 + 8 / 3, 0, 0],
+    ],
+    [],
+  );
+  const marker3 = useMemo(
+    () => [
+      [-2 + 8 / 3, 0, 0],
+      [2, 0, 0],
+    ],
+    [],
+  );
 
-  for (let i = 0; i <= steps; i++) {
-    const t = i / steps;
-    const x = -2 + t * 4;
-    const y = Math.sin(t * Math.PI * 6);
-    points.push([x, y, 0]);
-  }
+  const points = useMemo(() => {
+    const generatedPoints = [];
+    const steps = 200;
+
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const x = -2 + t * 4;
+      const y = Math.sin(t * Math.PI * 6);
+      generatedPoints.push([x, y, 0]);
+    }
+
+    return generatedPoints;
+  }, []);
 
   return (
     <>
