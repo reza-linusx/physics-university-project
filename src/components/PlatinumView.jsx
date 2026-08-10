@@ -18,6 +18,8 @@ function PlatinumView({ controlsEnabled = true }) {
         maxDistance={15}
         target={[0, 0, 0]}
         enabled={controlsEnabled}
+        makeDefault
+        enableDamping={false}
       />
     </Canvas>
   );
