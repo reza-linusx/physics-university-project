@@ -18,6 +18,8 @@ function PlatinumCylinderView({ controlsEnabled = true }) {
         maxDistance={8}
         target={[0, 0, 0]}
         enabled={controlsEnabled}
+        makeDefault
+        enableDamping={false}
       />
     </Canvas>
   );
