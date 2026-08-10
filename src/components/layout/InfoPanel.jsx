@@ -22,7 +22,7 @@ export default function InfoPanel({ title, description }) {
 
       <div
         className={`
-          fixed lg:relative top-0 right-0 h-full min-h-screen w-75 
+          fixed lg:relative top-0 right-0 h-full min-h-screen w-65 
           bg-gray-800 border-l border-gray-700 p-4 text-center overflow-y-auto
           transition-transform duration-300 ease-in-out z-40
           flex flex-col shadow-2xl lg:shadow-none
