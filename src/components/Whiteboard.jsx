@@ -6,13 +6,19 @@ import "./whiteboard.css";
 function Whiteboard({ perKey, transparent = false, hideUi = false }) {
   const components = transparent
     ? {
-        Background: () => <div className="absolute inset-0 bg-slate-700/20" />,
+        Background: () => <div className="absolute inset-0 bg-slate-700/10" />,
       }
     : undefined;
 
   return (
-    <div className="w-full h-full rounded-lg overflow-hidden">
-      <Tldraw persistenceKey={perKey} components={components} hideUi={hideUi} />
+    <div className="w-full h-full overflow-hidden rounded-none">
+      <Tldraw
+        persistenceKey={perKey}
+        components={components}
+        hideUi={hideUi}
+        autoFocus={false}
+        disableAssets={true}
+      />
     </div>
   );
 }

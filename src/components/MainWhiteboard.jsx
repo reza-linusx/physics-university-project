@@ -7,8 +7,8 @@ export default function MainWhiteboard() {
   const { view } = useContext(ViewContext);
   return (
     <div
-      className={`p-2 absolute inset-0 rounded-lg transition-opacity duration-300 ${
-        view === "whiteboard" ? "absolute" : "hidden"
+      className={`absolute inset-0 transition-opacity duration-300 ${
+        view === "whiteboard" ? "block" : "hidden"
       }`}
     >
       <Whiteboard perKey={"main"} />

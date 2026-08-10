@@ -4,9 +4,11 @@ import { ViewContext } from "../context/ViewContext";
 import Whiteboard from "./Whiteboard";
 
 export default function OverlayWhiteboard() {
-  const { view, overlayActivated } = useContext(ViewContext);
+  const { overlayActivated } = useContext(ViewContext);
   return (
-    <div className={`absolute inset-0 ${overlayActivated ? "z-30" : ""} `}>
+    <div
+      className={`absolute inset-0 ${overlayActivated ? "z-30" : "pointer-events-none"}`}
+    >
       <Whiteboard perKey={"overlay"} transparent hideUi={!overlayActivated} />
     </div>
   );
