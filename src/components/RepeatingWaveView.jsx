@@ -6,7 +6,7 @@ import RepeatingWaves from "./RepeatingWaves";
 function RepeatingWaveView() {
   return (
     <Canvas camera={{ position: [0, 0, 5], fov: 40 }}>
-      <OrbitControls enableZoom={true} maxDistance={10} minDistance={2} />
+      <OrbitControls enableZoom={true} maxDistance={8} minDistance={3} />
       <RepeatingWaves />
     </Canvas>
   );
