@@ -6,9 +6,8 @@ import PlatinumBar from "./PlatinumBar";
 function PlatinumView({ controlsEnabled = true }) {
   return (
     <Canvas camera={{ position: [1.8, 1.2, 1.8], fov: 35 }}>
-      <ambientLight intensity={1.5} />
-      <directionalLight position={[5, 5, 5]} intensity={0.5} />
-      <directionalLight position={[-5, -5, -5]} intensity={0.5} />
+      <ambientLight intensity={1} />
+      <directionalLight position={[5, 5, 5]} intensity={0.2} />
       <PlatinumBar />
       <OrbitControls
         enableZoom={true}
